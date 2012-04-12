@@ -6,6 +6,10 @@ all: $(thumbs)
 thumb/%.png: full/%.png
 	convert -type palette $< -bordercolor "#CCCCCC" -border 3 -resize 25%  png8:$@
 
+palette-sources: 
+	for i in full/*.png; do \
+		convert -type palette $$i png8:$$i ; done 
+
 clean:
 	rm -v thumbs/*
 
